@@ -54,8 +54,6 @@
         <strong>Server IP:</strong> Mineblood_smp.aternos.me:49205
       </div>
       <p id="playercount">Checking server status...</p>
-      <p id="motd"></p>
-      <p id="version"></p>
     </div>
   </section>
 
@@ -89,33 +87,21 @@
 
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script>
-    async function fetchStatus() {
+    // Fetch online player count from Netlify function
+    async function fetchOnlinePlayers() {
       const statusEl = document.getElementById("playercount");
-      const motdEl = document.getElementById("motd");
-      const versionEl = document.getElementById("version");
 
       try {
-        let res = await fetch("/.netlify/functions/status");
-        let data = await res.json();
-
-        if (data.online) {
-          statusEl.textContent = `✅ Online: ${data.players}/${data.maxPlayers} players`;
-          motdEl.textContent = `MOTD: ${data.motd}`;
-          versionEl.textContent = `Version: ${data.version}`;
-        } else {
-          statusEl.textContent = "⏳ Server is starting or offline";
-          motdEl.textContent = "";
-          versionEl.textContent = "";
-        }
+        const res = await fetch("/.netlify/functions/playercount");
+        const data = await res.json();
+        statusEl.textContent = `✅ Online Players: ${data.onlinePlayers}`;
       } catch {
-        statusEl.textContent = "⚠️ Unable to fetch status";
-        motdEl.textContent = "";
-        versionEl.textContent = "";
+        statusEl.textContent = "⚠️ Unable to fetch player count";
       }
     }
 
-    fetchStatus();
-    setInterval(fetchStatus, 5000);
+    fetchOnlinePlayers();
+    setInterval(fetchOnlinePlayers, 5000);
 
     // Reveal animation on scroll
     const sections=document.querySelectorAll("section");
@@ -123,7 +109,15 @@
     window.addEventListener("scroll",reveal); reveal();
 
     // Particle background
-    particlesJS("particles-js",{particles:{number:{value:80},size:{value:3},move:{speed:1},line_linked:{enable:false},color:{value:"#ff0000"}}});
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 80 },
+        size: { value: 3 },
+        move: { speed: 1 },
+        line_linked: { enable: false },
+        color: { value: "#ff0000" }
+      }
+    });
   </script>
 </body>
 </html>
