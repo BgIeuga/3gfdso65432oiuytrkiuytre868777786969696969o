@@ -6,25 +6,21 @@
   <title>MineBlood SMP - Rules</title>
   <link href="https://fonts.cdnfonts.com/css/minecraftia" rel="stylesheet">
   <style>
-    body { font-family: 'Minecraftia', sans-serif; margin: 0; padding: 0; background: #111; color: #eee; text-align: center; overflow-x: hidden; }
-    #particles-js { position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: -1; background: #111; }
-    header { background: linear-gradient(135deg, crimson, darkred); padding: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); animation: fadeIn 1.2s ease-in-out; }
-    header img { width: 120px; image-rendering: pixelated; animation: float 3s infinite ease-in-out; }
-    header h1 { font-size: 3em; margin: 10px 0 5px 0; text-shadow: 2px 2px 8px #000; animation: glow 2s infinite alternate; }
-    nav { background: linear-gradient(90deg, #111, #222, #111); background-size: 300% 300%; animation: gradientShift 8s infinite alternate; padding: 8px 0; position: sticky; top: 0; z-index: 1000; }
-    nav a { color: #fff; margin: 0 15px; text-decoration: none; font-weight: bold; font-size: 0.95em; transition: color 0.3s, border-bottom 0.3s; padding-bottom: 4px; }
-    nav a:hover { color: crimson; border-bottom: 2px solid crimson; }
-    section { padding: 60px 20px; max-width: 900px; margin: auto; opacity: 0; transform: translateY(30px); transition: opacity 1s ease, transform 1s ease; }
-    section.visible { opacity: 1; transform: translateY(0); }
-    .card { background: #222; padding: 25px; border-radius: 10px; margin: 20px auto; box-shadow: 0 0 15px rgba(255,0,0,0.3); animation: fadeInUp 1.2s ease; text-align: left; }
-    h2 { text-align: center; font-size: 2.5em; text-shadow: 2px 2px 6px #000; }
-    ul.rules { list-style: none; padding: 0; }
-    ul.rules li { background: #333; margin: 10px 0; padding: 12px; border-left: 5px solid crimson; border-radius: 6px; box-shadow: 0 0 10px rgba(255,0,0,0.2); }
-    footer { background: #111; padding: 15px; font-size: 0.9em; border-top: 2px solid crimson; }
-    footer a { color: #ff5555; text-decoration: none; font-weight: bold; }
-    footer a:hover { text-decoration: underline; }
-    @keyframes fadeIn { from {opacity:0; transform:translateY(-20px);} to {opacity:1; transform:translateY(0);} }
-    @keyframes fadeInUp { from {opacity:0; transform:translateY(40px);} to {opacity:1; transform:translateY(0);} }
+    body { font-family:'Minecraftia',sans-serif; margin:0; padding:0; background:#111; color:#eee; text-align:center; overflow-x:hidden; }
+    #particles-js { position:fixed; width:100%; height:100%; top:0; left:0; z-index:-1; background:#111; }
+    header { background:linear-gradient(135deg, crimson, darkred); padding:30px; box-shadow:0 4px 15px rgba(0,0,0,0.5); }
+    header img { width:120px; image-rendering:pixelated; animation:float 3s infinite ease-in-out; }
+    header h1 { font-size:3em; margin:10px 0 5px 0; text-shadow:2px 2px 8px #000; animation:glow 2s infinite alternate; }
+    nav { background:linear-gradient(90deg,#111,#222,#111); background-size:300% 300%; animation:gradientShift 8s infinite alternate; padding:8px 0; position:sticky; top:0; z-index:1000; }
+    nav a { color:#fff; margin:0 15px; text-decoration:none; font-weight:bold; font-size:0.95em; transition:color 0.3s, border-bottom 0.3s; padding-bottom:4px; }
+    nav a:hover { color:crimson; border-bottom:2px solid crimson; }
+    section { padding:60px 20px; max-width:900px; margin:auto; }
+    h2 { font-size:2.5em; text-shadow:2px 2px 6px #000; margin-bottom:15px; }
+    ul.rules { list-style:none; padding:0; max-width:700px; margin:20px auto; text-align:left; }
+    ul.rules li { background:#222; margin:10px 0; padding:12px 18px; border-radius:6px; transition:transform 0.2s, background 0.3s, box-shadow 0.3s; }
+    ul.rules li:hover { background:#333; transform:scale(1.03); box-shadow:0 0 12px crimson; }
+    ul.rules li strong { color:crimson; }
+    footer { background:#111; padding:15px; font-size:0.9em; border-top:2px solid crimson; }
     @keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-10px);} }
     @keyframes glow { from{text-shadow:0 0 10px crimson;} to{text-shadow:0 0 20px red,0 0 30px crimson;} }
     @keyframes gradientShift { from{background-position:left;} to{background-position:right;} }
@@ -35,7 +31,6 @@
   <header>
     <img src="logo.png" alt="MineBlood Logo">
     <h1>MineBlood SMP - Rules</h1>
-    <p>Play fair. Respect others. Keep it fun.</p>
   </header>
   <nav>
     <a href="index.html">Home</a>
@@ -44,44 +39,40 @@
     <a href="discord.html">Discord</a>
   </nav>
   <section>
-    <div class="card">
-      <h2>📜 Server Rules</h2>
-      <ul class="rules">
-        <li>1. Be Kind — Treat others with respect. 😊</li>
-        <li>2. No spawn killing — Resulting in full heart reset. 🚫</li>
-        <li>3. No hacking — Resulting in 10 day ban. 👮</li>
-        <li>4. No crystal PvP — Inventory & echest reset ⚡</li>
-        <li>5. No anchor PvP — Inventory & echest reset ⚡</li>
-        <li>6. No Admin Abuse — Instant demotion 🛡️</li>
-        <li>7. No spam killing — Heart reset 💖</li>
-        <li>8. No leaking seed — Owner will trap you in jail ⚔️</li>
-        <li>9. No lag machines — Permanent ban 🔨</li>
-        <li>10. No doxing — No leaking IP, no bot attacking ❌</li>
-        <li>11. Don’t try to crack the seed — Jail punishment ⚔️</li>
-        <li>12. Be respectful to staff — Same as players 😊</li>
-        <li>13. Appropriate Content — Keep it safe for all 👶👵</li>
-        <li>14. No spam — Don’t flood chat 😵‍💫</li>
-        <li>15. No self-promotion — Don’t advertise 📵</li>
-        <li>16. Use English — So everyone understands 🌐</li>
-        <li>17. Respect creativity — Don’t steal builds 🎨</li>
-        <li>18. No griefing / lava casting spawn — Jail ⚔️</li>
-        <li>19. No alt farming — Heart reset 💖</li>
-        <li>20. No duping — Permanent ban 🔨</li>
-        <li>21. No X-Ray or resource packs giving unfair advantage ⛏️</li>
-      </ul>
-      <h3 style="text-align:center; margin-top:25px; color:crimson;">👑 Follow Staff Instructions 👑</h3>
-    </div>
+    <h2>📖 Server Rules 📖</h2>
+    <ul class="rules">
+      <li><strong>1.</strong> Be Kind – Treat others with respect 😊</li>
+      <li><strong>2.</strong> No spawn killing – Full heart reset 🚫</li>
+      <li><strong>3.</strong> No hacking – 10 day ban 👮</li>
+      <li><strong>4.</strong> No crystal PvP – Full inventory + echest reset ⚡</li>
+      <li><strong>5.</strong> No anchor PvP – Full inventory + echest reset ⚡</li>
+      <li><strong>6.</strong> No Admin Abuse – Instant Demotion 🛡️</li>
+      <li><strong>7.</strong> No spam killing – Heart reset 💖</li>
+      <li><strong>8.</strong> No leaking seed – Owner will jail you ⚔️</li>
+      <li><strong>9.</strong> No Lag machines – Permanent ban 🔨</li>
+      <li><strong>10.</strong> No doxing – No leaking IPs, no bot attacks</li>
+      <li><strong>11.</strong> Don’t try to crack the seed – Owner will jail you ⚔️</li>
+      <li><strong>12.</strong> Be respectful to staff – Treat them with respect 😊</li>
+      <li><strong>13.</strong> Appropriate Content – Family-friendly 👶👵</li>
+      <li><strong>14.</strong> No Spam – Don’t spam chat 😵‍💫</li>
+      <li><strong>15.</strong> Don’t Self-Promote – 📵</li>
+      <li><strong>16.</strong> Use English – 🌐</li>
+      <li><strong>17.</strong> Respect Creativity – 🎨</li>
+      <li><strong>18.</strong> No griefing / lava casting spawn – Jail ⚔️</li>
+      <li><strong>19.</strong> No Alt farming – Heart reset 💖</li>
+      <li><strong>20.</strong> No duping – Permanent ban 🔨</li>
+      <li><strong>21.</strong> No X-Ray – Permanent ban 👀</li>
+    </ul>
+    <h3 style="color:crimson; margin-top:25px;">👑 Follow All Instructions 👑</h3>
   </section>
   <footer>
-    &copy; 2025 MineBlood SMP. All Rights Reserved. | 
-    <a href="discord.html">Join our Discord</a>
+    &copy; 2025 MineBlood SMP. All Rights Reserved.
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script>
-    const sections=document.querySelectorAll("section");
-    const revealOnScroll=()=>{const trigger=window.innerHeight*0.85;sections.forEach(sec=>{if(sec.getBoundingClientRect().top<trigger){sec.classList.add("visible");}});};
-    window.addEventListener("scroll",revealOnScroll);revealOnScroll();
-    particlesJS("particles-js",{particles:{number:{value:80},size:{value:3},move:{speed:1},line_linked:{enable:false},color:{value:"#ff0000"}}});
+    particlesJS("particles-js", {
+      particles: { number:{value:80}, size:{value:3}, move:{speed:1}, line_linked:{enable:false}, color:{value:"#ff0000"} }
+    });
   </script>
 </body>
 </html>
