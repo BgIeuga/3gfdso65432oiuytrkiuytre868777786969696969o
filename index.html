@@ -54,6 +54,8 @@
         <strong>Server IP:</strong> Mineblood_smp.aternos.me:49205
       </div>
       <p id="playercount">Checking server status...</p>
+      <p id="motd"></p>
+      <p id="version"></p>
     </div>
   </section>
 
@@ -89,18 +91,26 @@
   <script>
     async function fetchStatus() {
       const statusEl = document.getElementById("playercount");
+      const motdEl = document.getElementById("motd");
+      const versionEl = document.getElementById("version");
 
       try {
         let res = await fetch("/.netlify/functions/status");
         let data = await res.json();
 
         if (data.online) {
-          statusEl.textContent = `✅ Online: ${data.players.online}/${data.players.max} players`;
+          statusEl.textContent = `✅ Online: ${data.players}/${data.maxPlayers} players`;
+          motdEl.textContent = `MOTD: ${data.motd}`;
+          versionEl.textContent = `Version: ${data.version}`;
         } else {
           statusEl.textContent = "⏳ Server is starting or offline";
+          motdEl.textContent = "";
+          versionEl.textContent = "";
         }
       } catch {
         statusEl.textContent = "⚠️ Unable to fetch status";
+        motdEl.textContent = "";
+        versionEl.textContent = "";
       }
     }
 
