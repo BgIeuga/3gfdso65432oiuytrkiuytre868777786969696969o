@@ -90,35 +90,24 @@
     async function fetchStatus() {
       const statusEl = document.getElementById("playercount");
 
-      async function check(ip) {
-        let res = await fetch("https://api.mcsrvstat.us/2/" + ip);
-        return await res.json();
-      }
-
       try {
-        // Try without port first
-        let data = await check("Mineblood_smp.aternos.me");
-
-        // If offline, try with port
-        if (!data.online) {
-          data = await check("Mineblood_smp.aternos.me:49205");
-        }
+        let res = await fetch("/.netlify/functions/status");
+        let data = await res.json();
 
         if (data.online) {
           statusEl.textContent = `✅ Online: ${data.players.online}/${data.players.max} players`;
         } else {
-          statusEl.textContent = "❌ Server is offline";
+          statusEl.textContent = "⏳ Server is starting or offline";
         }
-      } catch (e) {
+      } catch {
         statusEl.textContent = "⚠️ Unable to fetch status";
       }
     }
 
-    // Refresh every 5 seconds
     fetchStatus();
     setInterval(fetchStatus, 5000);
 
-    // Reveal on scroll
+    // Reveal animation on scroll
     const sections=document.querySelectorAll("section");
     const reveal=()=>{const t=window.innerHeight*0.85;sections.forEach(s=>{if(s.getBoundingClientRect().top<t){s.classList.add("visible");}})};
     window.addEventListener("scroll",reveal); reveal();
