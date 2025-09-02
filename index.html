@@ -3,32 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MineBlood</title>
+  <title>MineBlood - Minecraft Server</title>
   <link href="https://fonts.cdnfonts.com/css/minecraftia" rel="stylesheet">
   <style>
-    body { font-family: 'Minecraftia', sans-serif; margin: 0; padding: 0; background: #111; color: #eee; text-align: center; overflow-x: hidden; }
-    #particles-js { position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: -1; background: #111; }
-    header { background: linear-gradient(135deg, crimson, darkred); padding: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); animation: fadeIn 1.2s ease-in-out; }
-    header img { width: 120px; image-rendering: pixelated; animation: float 3s infinite ease-in-out; }
-    header h1 { font-size: 3em; margin: 10px 0 5px 0; text-shadow: 2px 2px 8px #000; animation: glow 2s infinite alternate; }
-    nav { background: linear-gradient(90deg, #111, #222, #111); background-size: 300% 300%; animation: gradientShift 8s infinite alternate; padding: 8px 0; position: sticky; top: 0; z-index: 1000; }
-    nav a { color: #fff; margin: 0 15px; text-decoration: none; font-weight: bold; font-size: 0.95em; transition: color 0.3s, border-bottom 0.3s; padding-bottom: 4px; }
-    nav a:hover { color: crimson; border-bottom: 2px solid crimson; }
-    section { padding: 60px 20px; max-width: 900px; margin: auto; opacity: 0; transform: translateY(30px); transition: opacity 1s ease, transform 1s ease; }
-    section.visible { opacity: 1; transform: translateY(0); }
-    .card { background: #222; padding: 25px; border-radius: 10px; margin: 20px auto; box-shadow: 0 0 15px rgba(255,0,0,0.3); transition: transform 0.3s, box-shadow 0.3s; animation: fadeInUp 1.2s ease; }
-    .card:hover { transform: scale(1.05) rotate(-1deg); box-shadow: 0 0 25px rgba(255,0,0,0.6); }
-    .ip-box { background: #333; padding: 15px; border-radius: 8px; display: inline-block; margin-top: 20px; font-size: 1.1em; color: #ffcccc; box-shadow: 0 0 10px rgba(220,20,60,0.4); }
-    .coming { font-size: 1.5em; font-weight: bold; color: crimson; text-shadow: 0 0 15px crimson; animation: pulse 2s infinite; margin-top: 15px; }
-    footer { background: #111; padding: 15px; font-size: 0.9em; border-top: 2px solid crimson; }
-    footer a { color: #ff5555; text-decoration: none; font-weight: bold; }
-    footer a:hover { text-decoration: underline; }
-    @keyframes fadeIn { from {opacity:0; transform:translateY(-20px);} to {opacity:1; transform:translateY(0);} }
-    @keyframes fadeInUp { from {opacity:0; transform:translateY(40px);} to {opacity:1; transform:translateY(0);} }
+    body { font-family:'Minecraftia',sans-serif; margin:0; padding:0; background:#111; color:#eee; text-align:center; overflow-x:hidden; }
+    #particles-js { position:fixed; width:100%; height:100%; top:0; left:0; z-index:-1; background:#111; }
+    header { background:linear-gradient(135deg, crimson, darkred); padding:30px; box-shadow:0 4px 15px rgba(0,0,0,0.5); animation:fadeIn 1.2s ease-in-out; }
+    header img { width:120px; image-rendering:pixelated; animation:float 3s infinite ease-in-out; }
+    header h1 { font-size:3em; margin:10px 0 5px 0; text-shadow:2px 2px 8px #000; animation:glow 2s infinite alternate; }
+    header p { margin:0; font-size:1.2em; color:#ffcccc; opacity:0.9; }
+    nav { background:linear-gradient(90deg,#111,#222,#111); background-size:300% 300%; animation:gradientShift 8s infinite alternate; padding:8px 0; position:sticky; top:0; z-index:1000; }
+    nav a { color:#fff; margin:0 15px; text-decoration:none; font-weight:bold; font-size:0.95em; transition:color 0.3s, border-bottom 0.3s; padding-bottom:4px; }
+    nav a:hover { color:crimson; border-bottom:2px solid crimson; }
+    section { padding:60px 20px; max-width:900px; margin:auto; opacity:0; transform:translateY(30px); transition:opacity 1s ease, transform 1s ease; }
+    section.visible { opacity:1; transform:translateY(0); }
+    h2 { font-size:2.5em; margin-bottom:10px; text-shadow:2px 2px 6px #000; }
+    h3.subtitle { margin-top:0; font-size:1.2em; color:#ff9999; opacity:0.9; margin-bottom:20px; }
+    .card { background:#222; padding:25px; border-radius:10px; margin:20px auto; box-shadow:0 0 15px rgba(255,0,0,0.3); transition:transform 0.3s, box-shadow 0.3s; animation:fadeInUp 1.2s ease; }
+    .card:hover { transform:scale(1.05) rotate(-1deg); box-shadow:0 0 25px rgba(255,0,0,0.6); }
+    .ip-box { background:#333; padding:15px; border-radius:8px; display:inline-block; margin-top:20px; transition:background 0.3s, transform 0.2s; animation:pulse 2s infinite; }
+    .ip-box:hover { background:#444; transform:scale(1.05); }
+    footer { background:#111; padding:15px; font-size:0.9em; border-top:2px solid crimson; }
+    @keyframes fadeIn { from{opacity:0; transform:translateY(-20px);} to{opacity:1; transform:translateY(0);} }
+    @keyframes fadeInUp { from{opacity:0; transform:translateY(40px);} to{opacity:1; transform:translateY(0);} }
     @keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-10px);} }
     @keyframes glow { from{text-shadow:0 0 10px crimson;} to{text-shadow:0 0 20px red,0 0 30px crimson;} }
     @keyframes gradientShift { from{background-position:left;} to{background-position:right;} }
-    @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+    @keyframes pulse { 0%,100%{box-shadow:0 0 5px crimson;} 50%{box-shadow:0 0 20px crimson;} }
   </style>
 </head>
 <body>
@@ -36,7 +37,7 @@
   <header>
     <img src="logo.png" alt="MineBlood Logo">
     <h1>MineBlood SMP</h1>
-    <p>The Ultimate Minecraft Java Survival Adventure</p>
+    <p>The Ultimate Minecraft Adventure</p>
   </header>
   <nav>
     <a href="index.html">Home</a>
@@ -44,49 +45,65 @@
     <a href="store.html">Store</a>
     <a href="discord.html">Discord</a>
   </nav>
+
   <section id="home">
     <div class="card">
-      <h2>Welcome to MineBlood SMP</h2>
-      <p>Fight for survival, glory, and domination in our unique Minecraft world.</p>
-      <div class="ip-box"><strong>Server IP:</strong> Mineblood_smp.aternos.me:49205</div>
+      <h2>Welcome to MineBlood</h2>
+      <h3 class="subtitle">Fight for survival, glory, and domination in our custom world.</h3>
+      <div class="ip-box">
+        <strong>Server IP:</strong> Mineblood_smp.aternos.me:49205
+      </div>
       <p id="playercount">Checking server status...</p>
     </div>
   </section>
+
+  <section id="rules">
+    <div class="card">
+      <h2>Server Rules</h2>
+      <h3 class="subtitle">Keep the game fair and fun for everyone.</h3>
+      <p><a href="rules.html" style="color:crimson; font-weight:bold;">📜 View Full Rules</a></p>
+    </div>
+  </section>
+
   <section id="store">
     <div class="card">
-      <h2>🛒 Store</h2>
-      <p>Support the server by purchasing ranks & perks.</p>
-      <p class="coming">🚧 Coming Soon 🚧</p>
+      <h2>Support the Server</h2>
+      <h3 class="subtitle">Exclusive ranks, perks, and items.</h3>
+      <p><a href="store.html" style="color:crimson; font-weight:bold;">🛒 Store Coming Soon!</a></p>
     </div>
   </section>
+
   <section id="discord">
     <div class="card">
-      <h2>💬 Discord</h2>
-      <p>Join our community, chat, and get updates!</p>
-      <a href="https://discord.gg/XURB8HVXye" target="_blank" style="color: crimson; font-weight:bold; font-size: 1.2em;">👉 Join Discord</a>
+      <h2>Join Our Discord</h2>
+      <h3 class="subtitle">Chat, trade, and team up with the community.</h3>
+      <p><a href="discord.html" style="color:crimson; font-weight:bold;">💬 Click Here</a></p>
     </div>
   </section>
+
   <footer>
-    &copy; 2025 MineBlood SMP. All Rights Reserved. | 
-    <a href="discord.html">Join our Discord</a>
+    &copy; 2025 MineBlood SMP. All Rights Reserved.
   </footer>
+
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script>
     async function fetchStatus() {
       try {
-        let response = await fetch("https://api.mcsrvstat.us/2/Mineblood_smp.aternos.me:49205");
-        let data = await response.json();
+        let res = await fetch("https://api.mcsrvstat.us/2/Mineblood_smp.aternos.me:49205");
+        let data = await res.json();
         if (data.online) {
           document.getElementById("playercount").textContent = `✅ Online: ${data.players.online}/${data.players.max} players`;
         } else {
           document.getElementById("playercount").textContent = "❌ Server is offline";
         }
-      } catch { document.getElementById("playercount").textContent = "⚠️ Unable to fetch status"; }
+      } catch {
+        document.getElementById("playercount").textContent = "⚠️ Unable to fetch status";
+      }
     }
     fetchStatus(); setInterval(fetchStatus, 30000);
-    const sections = document.querySelectorAll("section");
-    const revealOnScroll = () => { const trigger = window.innerHeight*0.85; sections.forEach(sec=>{ if(sec.getBoundingClientRect().top<trigger){ sec.classList.add("visible"); } }); };
-    window.addEventListener("scroll", revealOnScroll); revealOnScroll();
+    const sections=document.querySelectorAll("section");
+    const reveal=()=>{const t=window.innerHeight*0.85;sections.forEach(s=>{if(s.getBoundingClientRect().top<t){s.classList.add("visible");}})};
+    window.addEventListener("scroll",reveal); reveal();
     particlesJS("particles-js",{particles:{number:{value:80},size:{value:3},move:{speed:1},line_linked:{enable:false},color:{value:"#ff0000"}}});
   </script>
 </body>
