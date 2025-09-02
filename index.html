@@ -86,27 +86,16 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
   <script>
-    // Fetch online player count from Netlify function
-    async function fetchOnlinePlayers() {
-      const statusEl = document.getElementById("playercount");
-
-      try {
-        const res = await fetch("/.netlify/functions/playercount");
-        const data = await res.json();
-        statusEl.textContent = `✅ Online Players: ${data.onlinePlayers}`;
-      } catch {
-        statusEl.textContent = "⚠️ Unable to fetch player count";
-      }
-    }
-
-    fetchOnlinePlayers();
-    setInterval(fetchOnlinePlayers, 5000);
-
     // Reveal animation on scroll
-    const sections=document.querySelectorAll("section");
-    const reveal=()=>{const t=window.innerHeight*0.85;sections.forEach(s=>{if(s.getBoundingClientRect().top<t){s.classList.add("visible");}})};
-    window.addEventListener("scroll",reveal); reveal();
+    const sections = document.querySelectorAll("section");
+    const reveal = () => {
+      const t = window.innerHeight * 0.85;
+      sections.forEach(s => { if (s.getBoundingClientRect().top < t) s.classList.add("visible"); });
+    };
+    window.addEventListener("scroll", reveal);
+    reveal();
 
     // Particle background
     particlesJS("particles-js", {
@@ -118,6 +107,25 @@
         color: { value: "#ff0000" }
       }
     });
+
+    // Online player count with last-known fallback
+    let lastPlayers = 0;
+
+    async function fetchOnlinePlayers() {
+      const statusEl = document.getElementById("playercount");
+
+      try {
+        const res = await fetch("/.netlify/functions/playercount");
+        const data = await res.json();
+        if (data.onlinePlayers > 0) lastPlayers = data.onlinePlayers;
+        statusEl.textContent = `✅ Online Players: ${lastPlayers}`;
+      } catch {
+        statusEl.textContent = `⚠️ Unable to fetch player count`;
+      }
+    }
+
+    fetchOnlinePlayers();
+    setInterval(fetchOnlinePlayers, 5000);
   </script>
 </body>
 </html>
